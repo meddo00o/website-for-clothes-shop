@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Abdo store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    {% if not authenticated %}
+      <section class="admin-login-card">
+        <p class="eyebrow">Admin Access</p>
+        <h1>Manage products</h1>
+        <p>Log in to add, edit, and delete products without touching code.</p>
+        <form class="admin-login-form" method="post" action="{{ url_for('admin_login') }}">
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <button class="btn btn-primary" type="submit">Log In</button>
+        </form>
+        {% if login_error %}
+          <p class="admin-error">{{ login_error }}</p>
+        {% endif %}
+      </section>
+    {% else %}
+      <section class="admin-header">
+        <div>
+          <p class="eyebrow">Admin Dashboard</p>
+          <h1>Product management</h1>
+        </div>
+        <div class="admin-header-actions">
+          <a class="btn btn-secondary admin-back-link" href="{{ url_for('index') }}">Back to Store</a>
+          <form method="post" action="{{ url_for('admin_logout') }}">
+            <button class="btn btn-primary" type="submit">Log Out</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-grid">
+        <article class="admin-panel">
+          <p class="eyebrow">Add Product</p>
+          <h2>Create a new item</h2>
+          <form class="admin-product-form" method="post" action="{{ url_for('admin_create_product') }}">
+            <input type="text" name="name" placeholder="Product name" required>
+            <input type="text" name="category" placeholder="Category" required>
+            <input type="text" name="badge" placeholder="Badge" required>
+            <input type="number" name="price" placeholder="Price in EGP" min="1" required>
+            <input type="text" name="sizes" placeholder="Sizes, comma separated. Example: S,M,L,XL" required>
+            <input type="text" name="image" placeholder="Image URL" required>
+            <input type="text" name="swatch" placeholder="Swatch CSS or color" required>
+            <textarea name="note" rows="5" placeholder="Product description" required></textarea>
+            <button class="btn btn-primary" type="submit">Add Product</button>
+          </form>
+        </article>
+
+        <article class="admin-panel">
+          <p class="eyebrow">Current Catalog</p>
+          <h2>Edit products</h2>
+          <div class="admin-product-list">
+            {% for product in products %}
+              <form class="admin-product-card" method="post" action="{{ url_for('admin_update_product', product_id=product.id) }}">
+                <div class="admin-product-top">
+                  <strong>#{{ product.id }} {{ product.name }}</strong>
+                  <button class="admin-delete-button" type="submit" formaction="{{ url_for('admin_delete_product', product_id=product.id) }}">Delete</button>
+                </div>
+                <input type="text" name="name" value="{{ product.name }}" required>
+                <input type="text" name="category" value="{{ product.category }}" required>
+                <input type="text" name="badge" value="{{ product.badge }}" required>
+                <input type="number" name="price" value="{{ product.price }}" min="1" required>
+                <input type="text" name="sizes" value="{{ product.sizes | join(',') }}" required>
+                <input type="text" name="image" value="{{ product.image }}" required>
+                <input type="text" name="swatch" value="{{ product.swatch }}" required>
+                <textarea name="note" rows="4" required>{{ product.note }}</textarea>
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+              </form>
+            {% endfor %}
+          </div>
+        </article>
+      </section>
+    {% endif %}
+  </main>
+</body>
+</html>

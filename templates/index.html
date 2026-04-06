@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdo store | Modern Clothes Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page-glow page-glow-left" aria-hidden="true"></div>
+  <div class="page-glow page-glow-right" aria-hidden="true"></div>
+
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <span class="brand-mark">AS</span>
+        <div>
+          <p class="eyebrow">Cairo Curated Wardrobe</p>
+          <h1>Abdo store</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#collection">Collection</a>
+        <a href="#story">Story</a>
+        <a href="#journal">Journal</a>
+        <a href="#membership">Membership</a>
+      </nav>
+
+      <button class="cart-button" type="button">
+        Cart
+        <span id="cartCount">0</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Spring / Summer Edit 2026</p>
+          <h2>Quiet luxury for everyday dressing.</h2>
+          <p class="hero-text">
+            A more complete storefront for a fashion brand needs more than a nice grid. It needs mood, hierarchy, trust, and product storytelling. This version is built to feel closer to a real premium clothes store.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#collection">Shop Collection</a>
+            <a class="btn btn-secondary" href="#membership">Join Atelier Club</a>
+          </div>
+
+          <div class="hero-trust">
+            <span>Free exchanges</span>
+            <span>Premium packaging</span>
+            <span>Delivered in 48 hours</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <article class="hero-photo hero-photo-main">
+            <div class="photo-overlay">
+              <span>Signature Drop</span>
+              <strong>Modern tailoring made easier to wear.</strong>
+            </div>
+          </article>
+          <article class="hero-photo hero-photo-accent">
+            <div class="photo-overlay">
+              <span>Studio Select</span>
+              <strong>Neutral layers with sharper structure.</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Store highlights">
+        <article>
+          <strong>4.9/5</strong>
+          <span>Average rating from repeat buyers</span>
+        </article>
+        <article>
+          <strong>48h</strong>
+          <span>Dispatch across Cairo and major cities</span>
+        </article>
+        <article>
+          <strong>Premium</strong>
+          <span>Fabric-first sourcing and finishing</span>
+        </article>
+      </section>
+
+      <section class="collection" id="collection">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Selected Pieces</p>
+            <h2>Build a balanced wardrobe</h2>
+          </div>
+
+          <div class="filters" id="filters" aria-label="Product filters"></div>
+        </div>
+
+        <div class="products" id="products"></div>
+      </section>
+
+      <section class="editorial-grid" id="story">
+        <article class="editorial-card editorial-large">
+          <p class="eyebrow">Brand Direction</p>
+          <h2>A cleaner storefront sells confidence before it sells clothing.</h2>
+          <p>
+            Professional ecommerce design is mostly about disciplined choices: strong photography framing, cleaner spacing, fewer competing accents, and better trust placement.
+          </p>
+        </article>
+        <article class="editorial-card editorial-photo editorial-photo-one"></article>
+        <article class="editorial-card editorial-photo editorial-photo-two"></article>
+        <article class="editorial-card editorial-note">
+          <p class="eyebrow">Why It Feels Better</p>
+          <h3>Less generic. More branded.</h3>
+          <p>The page now behaves like a fashion homepage rather than a classroom exercise.</p>
+        </article>
+      </section>
+
+      <section class="benefits" id="benefits">
+        <article>
+          <h3>Seasonal edits</h3>
+          <p>Small curated drops keep the storefront focused and easier to browse.</p>
+        </article>
+        <article>
+          <h3>Confident fit</h3>
+          <p>Core size ranges are surfaced directly on cards to reduce uncertainty.</p>
+        </article>
+        <article>
+          <h3>Gift-ready delivery</h3>
+          <p>Packaging and post-purchase presentation match the premium tone of the site.</p>
+        </article>
+      </section>
+
+      <section class="reviews" id="journal">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Client Notes</p>
+            <h2>Trusted by customers who buy for fit, fabric, and finish.</h2>
+          </div>
+          <div class="review-summary">
+            <strong id="reviewAverage">0.0</strong>
+            <span id="reviewCount">0 reviews</span>
+          </div>
+        </div>
+
+        <div class="review-layout">
+          <div class="review-grid" id="reviewList"></div>
+
+          <form class="review-form" id="reviewForm">
+            <p class="eyebrow">Write a Review</p>
+            <h3>Share your experience</h3>
+            <input id="reviewName" type="text" placeholder="Your name">
+            <input id="reviewRole" type="text" placeholder="Your role or purchase context">
+            <select id="reviewRating">
+              <option value="">Choose rating</option>
+              <option value="5">5 stars</option>
+              <option value="4">4 stars</option>
+              <option value="3">3 stars</option>
+              <option value="2">2 stars</option>
+              <option value="1">1 star</option>
+            </select>
+            <textarea id="reviewComment" rows="5" placeholder="Write what you liked, how the fit felt, and whether you would recommend it."></textarea>
+            <button class="btn btn-primary" type="submit">Submit Review</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="membership" id="membership">
+        <div>
+          <p class="eyebrow">Abdo store</p>
+          <h2>Private access to new drops, early pricing, and styling notes.</h2>
+          <p>
+            Join the mailing list for launch alerts, seasonal lookbooks, and limited-run releases.
+          </p>
+        </div>
+
+        <form class="membership-form" id="membershipForm">
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" type="email" placeholder="Enter your email">
+          <button class="btn btn-primary" type="submit">Join Now</button>
+        </form>
+      </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel" aria-live="polite">
+      <div class="cart-panel-header">
+        <div>
+          <p class="eyebrow">Order Summary</p>
+          <h2>Your Cart</h2>
+        </div>
+        <button class="ghost-button ghost-dark" type="button" id="clearCart">Clear</button>
+      </div>
+
+      <ul class="cart-items" id="cartItems"></ul>
+
+      <div class="cart-footer">
+        <div class="trust-stack">
+          <span>Secure checkout</span>
+          <span>Cash or card accepted</span>
+          <span>Exchange within 14 days</span>
+        </div>
+        <div class="total-row">
+          <span>Subtotal</span>
+          <strong id="cartTotal">0 EGP</strong>
+        </div>
+        <button class="btn btn-primary btn-block" type="button" id="checkoutButton">Proceed to Checkout</button>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="brand-mark">AS</span>
+      <div>
+        <strong>Abdo store</strong>
+        <p>Refined clothing, sharper presentation, and a cleaner buying experience.</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#collection">Shop</a>
+      <a href="#journal">Reviews</a>
+      <a href="#membership">Newsletter</a>
+      <button class="footer-link-button" type="button" id="supportButton">Support</button>
+    </div>
+  </footer>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal-backdrop" data-close-modal="true"></div>
+    <section class="product-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="product-modal-close" type="button" id="closeProductModal" aria-label="Close product details">
+        ×
+      </button>
+      <div class="product-modal-media" id="modalImage"></div>
+      <div class="product-modal-content">
+        <p class="eyebrow" id="modalCategory">Category</p>
+        <div class="product-modal-heading">
+          <h2 id="modalTitle">Product</h2>
+          <span class="product-price" id="modalPrice">0 EGP</span>
+        </div>
+        <p class="product-modal-copy" id="modalNote"></p>
+        <div class="product-modal-meta">
+          <div>
+            <strong>Available sizes</strong>
+            <div class="sizes" id="modalSizes"></div>
+          </div>
+          <div>
+            <strong>Why it works</strong>
+            <p>Balanced construction, premium texture, and styling flexibility for day-to-night wear.</p>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="button" id="modalAddToCart">Add to Cart</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay-modal" id="checkoutModal" aria-hidden="true">
+    <div class="overlay-backdrop" data-close-overlay="checkoutModal"></div>
+    <section class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="overlay-close" type="button" data-close-overlay="checkoutModal" aria-label="Close checkout">
+        ×
+      </button>
+      <div class="overlay-layout">
+        <div>
+          <p class="eyebrow">Checkout</p>
+          <h2 id="checkoutTitle">Complete your order</h2>
+          <p class="overlay-copy">This is a full frontend checkout flow. Fill your details to simulate placing the order.</p>
+          <form class="checkout-form" id="checkoutForm">
+            <input type="text" id="customerName" placeholder="Full name">
+            <input type="tel" id="customerPhone" placeholder="Phone number">
+            <input type="text" id="customerAddress" placeholder="Delivery address">
+            <select id="paymentMethod">
+              <option value="">Choose payment method</option>
+              <option value="Cash on Delivery">Cash on Delivery</option>
+              <option value="Card on Delivery">Card on Delivery</option>
+            </select>
+            <button class="btn btn-primary" type="submit">Place Order</button>
+          </form>
+        </div>
+        <div class="checkout-summary">
+          <p class="eyebrow">Summary</p>
+          <ul id="checkoutItems"></ul>
+          <div class="total-row">
+            <span>Total</span>
+            <strong id="checkoutTotal">0 EGP</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay-modal" id="supportModal" aria-hidden="true">
+    <div class="overlay-backdrop" data-close-overlay="supportModal"></div>
+    <section class="overlay-panel overlay-panel-narrow" role="dialog" aria-modal="true" aria-labelledby="supportTitle">
+      <button class="overlay-close" type="button" data-close-overlay="supportModal" aria-label="Close support">
+        ×
+      </button>
+      <p class="eyebrow">Support</p>
+      <h2 id="supportTitle">Need help with your order?</h2>
+      <p class="overlay-copy">Use these channels for sizing, delivery, or exchange questions.</p>
+      <div class="support-list" id="supportList">
+        <div>
+          <strong>Phone</strong>
+          <p>+20 100 123 4567</p>
+        </div>
+        <div>
+          <strong>Email</strong>
+          <p>support@abdostore.com</p>
+        </div>
+        <div>
+          <strong>Hours</strong>
+          <p>Daily from 10:00 AM to 10:00 PM</p>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" data-close-overlay="supportModal">Close</button>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
